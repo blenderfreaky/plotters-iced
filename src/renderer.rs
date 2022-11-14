@@ -39,7 +39,7 @@ impl<B: Backend + backend::Text> Renderer for iced_graphics::Renderer<B, Theme> 
             return;
         }
 
-        let geometry = chart.draw(bounds.size(), |frame| {
+        let geometry = chart.draw(bounds.size(), state, |frame| {
             let backend = IcedChartBackend::new(frame, self.backend(), font_resolver);
             let root: DrawingArea<_, _> = backend.into();
             chart.draw_chart(state, root);
