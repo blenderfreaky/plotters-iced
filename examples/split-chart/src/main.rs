@@ -160,7 +160,7 @@ fn draw_chart<DB: DrawingBackend>(mut chart: ChartBuilder<DB>, power: usize) {
             (-50..=50)
                 .map(|x| x as f32 / 50.0)
                 .map(|x| (x, x.powf(power as f32))),
-            &RED,
+            RED,
         ))
         .unwrap();
 }

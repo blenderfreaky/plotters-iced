@@ -317,17 +317,19 @@ mod tests {
 
     #[test]
     fn lttb_test() {
-        let mut dps = vec![];
-        dps.push(DataPoint::new(0.0, 10.0));
-        dps.push(DataPoint::new(1.0, 12.0));
-        dps.push(DataPoint::new(2.0, 8.0));
-        dps.push(DataPoint::new(3.0, 10.0));
-        dps.push(DataPoint::new(4.0, 12.0));
+        let dps = vec![
+            DataPoint::new(0.0, 10.0),
+            DataPoint::new(1.0, 12.0),
+            DataPoint::new(2.0, 8.0),
+            DataPoint::new(3.0, 10.0),
+            DataPoint::new(4.0, 12.0),
+        ];
 
-        let mut expected = vec![];
-        expected.push(DataPoint::new(0.0, 10.0));
-        expected.push(DataPoint::new(2.0, 8.0));
-        expected.push(DataPoint::new(4.0, 12.0));
+        let expected = vec![
+            DataPoint::new(0.0, 10.0),
+            DataPoint::new(2.0, 8.0),
+            DataPoint::new(4.0, 12.0),
+        ];
 
         let result: Vec<DataPoint> = dps.as_slice().lttb(3).cloned().collect();
 
