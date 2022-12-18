@@ -138,7 +138,7 @@ impl ArtChart {
 
 impl Chart<Message> for ArtChart {
     type State = ();
-    fn draw<F: Fn(&mut Frame)>(&self, bounds: Size, draw_fn: F) -> Geometry {
+    fn draw<F: Fn(&mut Frame)>(&self, bounds: Size, _state: &Self::State, draw_fn: F) -> Geometry {
         self.cache.draw(bounds, draw_fn)
     }
 

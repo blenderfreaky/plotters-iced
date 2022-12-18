@@ -23,8 +23,8 @@ where
         C::draw_chart(self, state, root)
     }
     #[inline]
-    fn draw<F: Fn(&mut Frame)>(&self, size: Size, f: F) -> Geometry {
-        C::draw(self, size, f)
+    fn draw<F: Fn(&mut Frame)>(&self, size: Size, state: &Self::State, f: F) -> Geometry {
+        C::draw(self, size, state, f)
     }
     #[inline]
     fn update(
@@ -122,7 +122,7 @@ pub trait Chart<Message> {
     /// }
     /// ```
     #[inline]
-    fn draw<F: Fn(&mut Frame)>(&self, size: Size, f: F) -> Geometry {
+    fn draw<F: Fn(&mut Frame)>(&self, size: Size, _state: &Self::State, f: F) -> Geometry {
         let mut frame = Frame::new(size);
         f(&mut frame);
         frame.into_geometry()
